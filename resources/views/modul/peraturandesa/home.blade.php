@@ -31,11 +31,11 @@
 								<th class="no">Nomor Urut</th>
 								<th>Jenis Peraturan Di Desa</th>
 								<th>Nomor Dan Tanggal Ditetapkan</th>
-								<th>Tentang</th>				
-								<th>Uraian Singkat</th>			
+								{{-- <th>Tentang</th>				 --}}
+								{{-- <th>Uraian Singkat</th>			 --}}
 								<th>Tanggal Kesepakatan Peraturan Desa</th>
 								<th>Nomor Dan Tanggal DiLaporkan</th>	
-								<th>Nomor Dan Tanggal Diunfangkan Dalam Lembaran Desa</th>
+								<th>Nomor Dan Tanggal Diundangkan Dalam Lembaran Desa</th>
 								<th>Nomor Dan Tanggal Diundangkan Dalam Berita Desa</th>
 								<th>KET.</th>
 								<th class="pilihan">Opsi</th>
@@ -50,8 +50,8 @@
 									<td align="center">{{$i++}}</td>
 									<td>{{$p->jenis}}</td>
 									<td>{{$p->nomor_ditetapkan}}</td>
-									<td>{{$p->tentang}}</td>
-									<td>{{$p->uraian}}</td>
+									{{-- <td>{{$p->tentang}}</td> --}}
+									{{-- <td>{{$p->uraian}}</td> --}}
 									<td>{{tgl_id($p->tanggal_kesepakatan)}}</td>
 									<td>{{$p->tanggal_dilaporkan}}</td>
 									<td>{{$p->tanggal_diundang}}</td>
@@ -61,6 +61,10 @@
 										{{-- <a data-original-title='Detail' class='btn btn-sm btn-orange tooltips' href='{{ url('data-peraturan-desa/'. $p->id)}}'>
 											<i class='clip-eye'></i>
 										</a> --}}
+
+										<a data-original-title='Detail' class='btn btn-green btn-sm tooltips' href='{{ url('data-peraturan-desa/'. $p->id)}}'>
+											<i class='clip-eye'></i>
+										</a>
 
 										<a data-original-title='Edit' class='btn btn-sm btn-blue tooltips' href='{{ url('data-peraturan-desa/'. $p->id .'/edit')}}'>
 											<i class='clip-pencil'></i>

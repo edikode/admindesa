@@ -78,7 +78,7 @@ class DataPeraturanDesa extends Controller
     public function show($id)
     {
         $pd = PeraturanDesa::findorfail($id);
-        return view('modul/peraturan-desa/show', compact('pd'));
+        return view('modul/peraturandesa/show', compact('pd'));
     }
 
     /**
