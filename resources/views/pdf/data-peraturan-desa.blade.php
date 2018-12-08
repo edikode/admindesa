@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Data Paket Wisata</title>
+        <title>Data Peraturan Desa</title>
         <body>
             <style type="text/css">
                 .tg  {border-collapse:collapse;border-spacing:0;border-color:black;width: 100%; }

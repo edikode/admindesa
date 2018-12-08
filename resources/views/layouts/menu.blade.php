@@ -11,7 +11,15 @@
 					<span class="selected"></span>					
 				</a>
 			</li>			
-			<li class="{{ set_active(['data-peraturan-desa', Request::is('data-peraturan-desa/*')]) }}">
+			<li class="{{ set_active([
+				'data-peraturan-desa', Request::is('data-peraturan-desa/*'),
+				'data-inventaris-kekayaan-desa', Request::is('data-inventaris-kekayaan-desa/*'),
+				'data-aparat-pemerintah-desa', Request::is('data-aparat-pemerintah-desa/*'),
+				'data-agenda', Request::is('data-agenda/*'),
+				'data-ekspedisi', Request::is('data-ekspedisi/*'),
+				'data-lembaran-desa', Request::is('data-lembaran-desa/*'),
+				'data-keputusan-kepala-desa', Request::is('data-keputusan-kepala-desa/*')
+			]) }}">
 				<a href="javascript:void(0)"><i class="clip-book"></i>
 					<span class="title">Administrasi Umum</span><i class="icon-arrow"></i>
 					<span class="selected"></span>
@@ -20,14 +28,14 @@
 					<li class="{{ set_active(['data-peraturan-desa', Request::is('data-peraturan-desa/*')]) }}">
 						<a href="{{ url('/data-peraturan-desa') }}"><span class='title'>Data Peraturan Desa</span></a>
 					</li>
-					<li class="">
-						<a href="#"><span class='title'>Data Keputusan Kepala Desa</span></a>
+					<li class="{{ set_active(['data-keputusan-kepala-desa', Request::is('data-keputusan-kepala-desa/*')]) }}">
+						<a href="{{ url('/data-keputusan-kepala-desa') }}"><span class='title'>Data Keputusan Kepala Desa</span></a>
 					</li>
-					<li class="">
-						<a href="#"><span class='title'>Data Inventaris KekayaanDesa</span></a>
+					<li class="{{ set_active(['data-inventaris-kekayaan-desa', Request::is('data-inventaris-kekayaan-desa/*')]) }}">
+						<a href="{{ url('/data-inventaris-kekayaan-desa') }}"><span class='title'>Data Inventaris Kekayaan Desa</span></a>
 					</li>
-					<li class="">
-						<a href="#"><span class='title'>Data Aparat Pemerintah Desa</span></a>
+					<li class="{{ set_active(['data-aparat-pemerintah-desa', Request::is('data-aparat-pemerintah-desa/*')]) }}">
+						<a href="{{ url('/data-aparat-pemerintah-desa') }}"><span class='title'>Data Aparat Pemerintah Desa</span></a>
 					</li>
 					<li class="">
 						<a href="#"><span class='title'>Data Tanah Milik Desa/Tanah Kas Desa</span></a>
@@ -35,25 +43,30 @@
 					<li class="">
 						<a href="#"><span class='title'>Data Tanah di Desa</span></a>
 					</li>
-					<li class="">
-						<a href="#"><span class='title'>Agenda</span></a>
+					<li class="{{ set_active(['data-agenda', Request::is('data-induk-penduduk-desa/*')]) }}">
+						<a href="{{ url('/data-agenda') }}"><span class='title'>Agenda</span></a>
 					</li>
-					<li class="">
-						<a href="#"><span class='title'>Ekspedisi</span></a>
+					<li class="{{ set_active(['data-ekspedisi', Request::is('data-ekspedisi/*')]) }}">
+						<a href="{{ url('/data-ekspedisi') }}"><span class='title'>Ekspedisi</span></a>
 					</li>
-					<li class="">
-						<a href="#"><span class='title'>Lembaran Desa dan Buku Berita Desa</span></a>
+					<li class="{{ set_active(['data-lembaran-desa', Request::is('data-lembaran-desa/*')]) }}">
+						<a href="{{ url('/data-lembaran-desa') }}"><span class='title'>Lembaran Desa dan Buku Berita Desa</span></a>
 					</li>
 				</ul>
 			</li>
-			<li class="">
+			<li class="{{ set_active([
+				'data-induk-penduduk-desa', Request::is('data-induk-penduduk-desa/*'),
+				'data-mutasi-penduduk-desa', Request::is('data-mutasi-penduduk-desa/*'),
+				'data-rekapitulasi-penduduk-akhir-bulan', Request::is('data-rekapitulasi-penduduk-akhir-bulan/*'),
+				'data-penduduk-sementara', Request::is('data-penduduk-sementara/*')
+			]) }}">
 				<a href="javascript:void(0)"><i class="clip-book"></i>
 					<span class="title">Administrasi Penduduk</span><i class="icon-arrow"></i>
 					<span class="selected"></span>
 				</a>
 				<ul class="sub-menu">					
-					<li class="">
-						<a href="#"><span class='title'>Data Induk Penduduk Desa</span></a>
+					<li class="{{ set_active(['data-induk-penduduk-desa', Request::is('data-induk-penduduk-desa/*')]) }}">
+						<a href="{{ url('/data-induk-penduduk-desa') }}"><span class='title'>Data Induk Penduduk Desa</span></a>
 					</li>
 					<li class="">
 						<a href="#"><span class='title'>Data Mutasi Penduduk Desa</span></a>

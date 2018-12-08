@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="{{ asset('assets/plugins/iCheck/skins/all.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/fonts/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/plugins/select2/select2.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/plugins/jQuery-Tags-Input/jquery.tagsinput.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/plugins/datepicker/css/datepicker.css') }}">
+
   <!-- UNTUK TABEL DATA -->   
   <link rel="stylesheet" href="{{ asset('assets/plugins/DataTables/media/css/DT_bootstrap.css') }}" />
 </head>
@@ -51,6 +54,7 @@
   </div>
   @include('layouts/footer')
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   
   <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -61,6 +65,7 @@
   <script src="{{ asset('assets/plugins/iCheck/jquery.icheck.min.js') }}"></script>
   <script src="{{ asset('assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js') }}"></script>
   <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
+  <script src="{{ asset('assets/plugins/jQuery-Tags-Input/jquery.tagsinput.js') }}"></script>
   {{-- untuk ckeditor textarea --}}
   <script src="{{ asset('assets/functions/ckeditor/ckeditor.js') }}"></script>
   <!-- untuk data table -->   
