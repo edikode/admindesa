@@ -1,10 +1,10 @@
 @extends('layouts.template')
 
-@section('title', 'Edit Data Peraturan Desa')
+@section('title', 'Detail Data Peraturan Desa')
 
 @section('bread')
 <li><a href="{{ url('admin') }}"><i class="icon-laptop"></i> Dashboard</a></li>
-<li class="active">Edit Data Peraturan Desa</li>
+<li class="active">Detail Data Peraturan Desa</li>
 @endsection
 
 @section('button')

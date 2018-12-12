@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Modul;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Induk;
+use App\Models\PendudukSementara;
 
 use Session;
 use PDF;
 
-class DataInduk extends Controller
+class DataPendudukSementara extends Controller
 {
     public function __construct()
     {
@@ -24,8 +24,8 @@ class DataInduk extends Controller
     {
         $filter = "";
         $keyword = "";
-        $datainduk = Induk::all();
-        return view('modul/datainduk/home', compact('datainduk','filter','keyword'));
+        $penduduksementara = PendudukSementara::all();
+        return view('modul/penduduksementara/home', compact('penduduksementara','filter','keyword'));
     }
 
     /**
@@ -46,33 +46,32 @@ class DataInduk extends Controller
      */
     public function store(Request $request)
     {
-        $pd = new Induk;
+        $pd = new PendudukSementara;
 
         $this->validate($request, [
-            'nik'      => 'required|unique:data_induk,nik,'.$pd['id'],
+            // 'nik'      => 'required|unique:data_induk,nik,'.$pd['id'],
         ]);
 
         $pd->nama = $request->nama;
         $pd->jenis_kelamin = $request->jenis_kelamin;
-        $pd->status = $request->status;
+        $pd->nomor_identitas = $request->nomor_identitas;
         $pd->tmp_lahir = $request->tmp_lahir;
         $pd->tgl_lahir = $request->tgl_lahir;
-        $pd->agama = $request->agama;
-        $pd->pendidikan_terakhir = $request->pendidikan_terakhir;
         $pd->pekerjaan = $request->pekerjaan;
-        $pd->dapat_membaca = $request->dapat_membaca;
         $pd->kewarganegaraan = $request->kewarganegaraan;
-        $pd->alamat = $request->alamat;
-        $pd->kedudukan = $request->kedudukan;
-        $pd->nik = $request->nik;
-        $pd->no_kk = $request->no_kk;
+        $pd->datang_dari = $request->datang_dari;
+        $pd->tujuan = $request->tujuan;
+        $pd->nama_didatangi = $request->nama_didatangi;
+        $pd->alamat_didatangi = $request->alamat_didatangi;
+        $pd->datang_tgl = $request->datang_tgl;
+        $pd->pergi_tgl = $request->pergi_tgl;
         $pd->keterangan = $request->keterangan;
 
         $pd->save();
 
-        Session::flash('pesan_sukses', 'Data Induk Penduduk Desa berhasil di Ditambah');
+        Session::flash('pesan_sukses', 'Data Penduduk Sementara berhasil di Ditambah');
 
-        return redirect('data-induk-penduduk-desa');
+        return redirect('data-penduduk-sementara');
     }
 
     /**
@@ -83,8 +82,8 @@ class DataInduk extends Controller
      */
     public function show($id)
     {
-        $pd = Induk::findorfail($id);
-        return view('modul/datainduk/show', compact('pd'));
+        $pd = PendudukSementara::findorfail($id);
+        return view('modul/penduduksementara/show', compact('pd'));
     }
 
     /**
@@ -95,8 +94,8 @@ class DataInduk extends Controller
      */
     public function edit($id)
     {
-        $pd = Induk::findorfail($id);
-        return view('modul/datainduk/edit', compact('pd'));
+        $pd = PendudukSementara::findorfail($id);
+        return view('modul/penduduksementara/edit', compact('pd'));
     }
 
     /**
@@ -108,33 +107,32 @@ class DataInduk extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pd = Induk::findorfail($id);
+        $pd = PendudukSementara::findorfail($id);
 
         $this->validate($request, [
-            'nik'      => 'required|unique:data_induk,nik,'.$pd['id'],
+            // 'nik'      => 'required|unique:data_induk,nik,'.$pd['id'],
         ]);
 
         $pd->nama = $request->nama;
         $pd->jenis_kelamin = $request->jenis_kelamin;
-        $pd->status = $request->status;
+        $pd->nomor_identitas = $request->nomor_identitas;
         $pd->tmp_lahir = $request->tmp_lahir;
         $pd->tgl_lahir = $request->tgl_lahir;
-        $pd->agama = $request->agama;
-        $pd->pendidikan_terakhir = $request->pendidikan_terakhir;
         $pd->pekerjaan = $request->pekerjaan;
-        $pd->dapat_membaca = $request->dapat_membaca;
         $pd->kewarganegaraan = $request->kewarganegaraan;
-        $pd->alamat = $request->alamat;
-        $pd->kedudukan = $request->kedudukan;
-        $pd->nik = $request->nik;
-        $pd->no_kk = $request->no_kk;
+        $pd->datang_dari = $request->datang_dari;
+        $pd->tujuan = $request->tujuan;
+        $pd->nama_didatangi = $request->nama_didatangi;
+        $pd->alamat_didatangi = $request->alamat_didatangi;
+        $pd->datang_tgl = $request->datang_tgl;
+        $pd->pergi_tgl = $request->pergi_tgl;
         $pd->keterangan = $request->keterangan;
         
         $pd->save();
 
-        Session::flash('pesan_sukses', 'Data Induk Penduduk Desa berhasil di Diperbarui');
+        Session::flash('pesan_sukses', 'Data Penduduk Sementara berhasil di Diperbarui');
 
-        return redirect('data-induk-penduduk-desa/'.$pd->id.'/edit');
+        return redirect('data-penduduk-sementara/'.$pd->id.'/edit');
     }
 
     /**
@@ -145,20 +143,20 @@ class DataInduk extends Controller
      */
     public function destroy($id)
     {
-        $pd = Induk::findorfail($id);
+        $pd = PendudukSementara::findorfail($id);
 
         $pd->delete();
-        Session::flash('pesan_sukses', 'Data Induk Penduduk Desa, NAMA: "'. $pd->nama .'" Berhasil Dihapus');
+        Session::flash('pesan_sukses', 'Data Penduduk Sementara, NAMA: "'. $pd->nama .'" Berhasil Dihapus');
         
-        return redirect('data-induk-penduduk-desa');
+        return redirect('data-penduduk-sementara');
     }
 
     public function cetak($keyword)
     {
-        $pd = Induk::all();
+        $pd = PendudukSementara::all();
         $jumlah = count($pd);
 
-        $pdf = PDF::loadView('pdf/data-induk-penduduk-desa',compact('pd','keyword'))
+        $pdf = PDF::loadView('pdf/data-penduduk-sementara',compact('pd','keyword'))
                     ->setPaper('a4', 'landscape');
 
         return $pdf->stream();

@@ -1,15 +1,15 @@
 @extends('layouts.template')
 
-@section('title', 'Edit Data Keputusan Kepala Desa')
+@section('title', 'Detail Data Keputusan Kepala Desa')
 
 @section('bread')
 <li><a href="{{ url('admin') }}"><i class="icon-laptop"></i> Dashboard</a></li>
-<li class="active">Edit Data Keputusan Kepala Desa</li>
+<li class="active">Detail Data Keputusan Kepala Desa</li>
 @endsection
 
 @section('button')
 
-	<a class="btn btn-large btn-red item" href="{{ url('data-peraturan-desa') }}">Kembali</a>
+	<a class="btn btn-large btn-red item" href="{{ url('data-keputusan-kepala-desa') }}">Kembali</a>
 
 @endsection
 

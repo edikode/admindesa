@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Inventaris extends Model
+class RencanaKerja extends Model
 {
-    protected $table ='inventaris_desa';
+    protected $table ='rencana_kerja';
 }

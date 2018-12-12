@@ -84,7 +84,7 @@
 										<option value="Islam" @if($pd->agama == "Islam") selected @endif>Islam</option>
 										<option value="Kritsten" @if($pd->agama == "Kritsten") selected @endif>Kritsten</option>
 										<option value="Katolik" @if($pd->agama == "Katolik") selected @endif>Katolik</option>
-										<option value="Islam" @if($pd->agama == "Islam") selected @endif>Hindu</option>
+										<option value="Hindu" @if($pd->agama == "Hindu") selected @endif>Hindu</option>
 										<option value="Budha" @if($pd->agama == "Budha") selected @endif>Budha</option>
 										<option value="Lainnya" @if($pd->agama == "Lainnya") selected @endif>Lainnya</option>
 									</select>

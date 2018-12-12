@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Modul;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Induk;
+use App\Models\KaderMasyarakat;
 
 use Session;
 use PDF;
 
-class DataInduk extends Controller
+class DataKaderMasyarakat extends Controller
 {
     public function __construct()
     {
@@ -24,8 +24,8 @@ class DataInduk extends Controller
     {
         $filter = "";
         $keyword = "";
-        $datainduk = Induk::all();
-        return view('modul/datainduk/home', compact('datainduk','filter','keyword'));
+        $kadermasyarakat = KaderMasyarakat::all();
+        return view('modul/kadermasyarakat/home', compact('kadermasyarakat','filter','keyword'));
     }
 
     /**
@@ -46,33 +46,25 @@ class DataInduk extends Controller
      */
     public function store(Request $request)
     {
-        $pd = new Induk;
+        $pd = new KaderMasyarakat;
 
         $this->validate($request, [
-            'nik'      => 'required|unique:data_induk,nik,'.$pd['id'],
+            // 'nik'      => 'required|unique:data_induk,nik,'.$pd['id'],
         ]);
 
         $pd->nama = $request->nama;
+        $pd->umur = $request->umur;
         $pd->jenis_kelamin = $request->jenis_kelamin;
-        $pd->status = $request->status;
-        $pd->tmp_lahir = $request->tmp_lahir;
-        $pd->tgl_lahir = $request->tgl_lahir;
-        $pd->agama = $request->agama;
-        $pd->pendidikan_terakhir = $request->pendidikan_terakhir;
-        $pd->pekerjaan = $request->pekerjaan;
-        $pd->dapat_membaca = $request->dapat_membaca;
-        $pd->kewarganegaraan = $request->kewarganegaraan;
+        $pd->pendidikan = $request->pendidikan;
+        $pd->bidang = $request->bidang;
         $pd->alamat = $request->alamat;
-        $pd->kedudukan = $request->kedudukan;
-        $pd->nik = $request->nik;
-        $pd->no_kk = $request->no_kk;
         $pd->keterangan = $request->keterangan;
 
         $pd->save();
 
-        Session::flash('pesan_sukses', 'Data Induk Penduduk Desa berhasil di Ditambah');
+        Session::flash('pesan_sukses', 'Data Kader Pemberdayaan Masyarakat berhasil di Ditambah');
 
-        return redirect('data-induk-penduduk-desa');
+        return redirect('kader-pendamping-masyarakat');
     }
 
     /**
@@ -83,8 +75,8 @@ class DataInduk extends Controller
      */
     public function show($id)
     {
-        $pd = Induk::findorfail($id);
-        return view('modul/datainduk/show', compact('pd'));
+        $pd = KaderMasyarakat::findorfail($id);
+        return view('modul/kadermasyarakat/show', compact('pd'));
     }
 
     /**
@@ -95,8 +87,8 @@ class DataInduk extends Controller
      */
     public function edit($id)
     {
-        $pd = Induk::findorfail($id);
-        return view('modul/datainduk/edit', compact('pd'));
+        $pd = KaderMasyarakat::findorfail($id);
+        return view('modul/kadermasyarakat/edit', compact('pd'));
     }
 
     /**
@@ -108,33 +100,25 @@ class DataInduk extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pd = Induk::findorfail($id);
+        $pd = KaderMasyarakat::findorfail($id);
 
         $this->validate($request, [
-            'nik'      => 'required|unique:data_induk,nik,'.$pd['id'],
+            // 'nik'      => 'required|unique:data_induk,nik,'.$pd['id'],
         ]);
 
         $pd->nama = $request->nama;
+        $pd->umur = $request->umur;
         $pd->jenis_kelamin = $request->jenis_kelamin;
-        $pd->status = $request->status;
-        $pd->tmp_lahir = $request->tmp_lahir;
-        $pd->tgl_lahir = $request->tgl_lahir;
-        $pd->agama = $request->agama;
-        $pd->pendidikan_terakhir = $request->pendidikan_terakhir;
-        $pd->pekerjaan = $request->pekerjaan;
-        $pd->dapat_membaca = $request->dapat_membaca;
-        $pd->kewarganegaraan = $request->kewarganegaraan;
+        $pd->pendidikan = $request->pendidikan;
+        $pd->bidang = $request->bidang;
         $pd->alamat = $request->alamat;
-        $pd->kedudukan = $request->kedudukan;
-        $pd->nik = $request->nik;
-        $pd->no_kk = $request->no_kk;
         $pd->keterangan = $request->keterangan;
         
         $pd->save();
 
-        Session::flash('pesan_sukses', 'Data Induk Penduduk Desa berhasil di Diperbarui');
+        Session::flash('pesan_sukses', 'Data Kader Pemberdayaan Masyarakat berhasil di Diperbarui');
 
-        return redirect('data-induk-penduduk-desa/'.$pd->id.'/edit');
+        return redirect('kader-pendamping-masyarakat/'.$pd->id.'/edit');
     }
 
     /**
@@ -145,21 +129,21 @@ class DataInduk extends Controller
      */
     public function destroy($id)
     {
-        $pd = Induk::findorfail($id);
+        $pd = KaderMasyarakat::findorfail($id);
 
         $pd->delete();
-        Session::flash('pesan_sukses', 'Data Induk Penduduk Desa, NAMA: "'. $pd->nama .'" Berhasil Dihapus');
+        Session::flash('pesan_sukses', 'Data Kader Pemberdayaan Masyarakat, NAMA: "'. $pd->nama .'" Berhasil Dihapus');
         
-        return redirect('data-induk-penduduk-desa');
+        return redirect('kader-pendamping-masyarakat');
     }
 
     public function cetak($keyword)
     {
-        $pd = Induk::all();
+        $pd = KaderMasyarakat::all();
         $jumlah = count($pd);
 
-        $pdf = PDF::loadView('pdf/data-induk-penduduk-desa',compact('pd','keyword'))
-                    ->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('pdf/data-kader-pendamping-masyarakat',compact('pd','keyword'))
+                    ->setPaper('a4', 'potrait');
 
         return $pdf->stream();
         // return $pdf->download('Data Peraturan Daerah.pdf');
