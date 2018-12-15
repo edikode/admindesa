@@ -172,7 +172,7 @@ body.rtl .main-content .container {
 @media (min-width: 768px) {
 	.modal-crud {
 		/* right: auto; */
-		/* left: 50%; */
+		left: 35%;
 		width: 900px !important; 
 		/* padding-top: 30px; */
 		/* padding-bottom: 30px; */

@@ -79,87 +79,83 @@
 		</div>		
 	</div>
 
-	<div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-crud">
-			<div class="modal-content">
-				<form action="{{url('kader-pendamping-masyarakat')}}" method="post" enctype="multipart/form-data">
-					{{ csrf_field() }}
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Tambah Data Kader Pemberdayaan Masyarakat</h4>
-					</div>		
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-md-12">
-								<div class='form-group @if($errors->has('nama')) has-error @endif'>
-									<label class='control-label'>Nama</label>
-									<input type='text' placeholder='Nama' class='form-control limited' id='nama' name='nama' maxlength='100' value='@if(count($errors) > 0){{old('nama')}}@endif'
-									required>
+	<div class="modal fade modal-crud" id="tambah" tabindex="-1" role="dialog" aria-hidden="true">
+		<form action="{{url('kader-pendamping-masyarakat')}}" method="post" enctype="multipart/form-data">
+			{{ csrf_field() }}
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Tambah Data Kader Pemberdayaan Masyarakat</h4>
+			</div>		
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class='form-group @if($errors->has('nama')) has-error @endif'>
+							<label class='control-label'>Nama</label>
+							<input type='text' placeholder='Nama' class='form-control limited' id='nama' name='nama' maxlength='100' value='@if(count($errors) > 0){{old('nama')}}@endif'
+							required>
 
-									@if ($errors->has('nama'))
-										<span for="nama" class="help-block">{{ $errors->first('nama') }}</span>
-									@endif
-								</div>	
-								<div class='form-group @if($errors->has('umur')) has-error @endif'>
-									<label class='control-label'>Umur</label>
-									<input type='text' placeholder='Umur' class='form-control limited' id='umur' name='umur' maxlength='100' value='@if(count($errors) > 0){{old('umur')}}@endif'
-									required>
+							@if ($errors->has('nama'))
+								<span for="nama" class="help-block">{{ $errors->first('nama') }}</span>
+							@endif
+						</div>	
+						<div class='form-group @if($errors->has('umur')) has-error @endif'>
+							<label class='control-label'>Umur</label>
+							<input type='text' placeholder='Umur' class='form-control limited' id='umur' name='umur' maxlength='100' value='@if(count($errors) > 0){{old('umur')}}@endif'
+							required>
 
-									@if ($errors->has('umur'))
-										<span for="umur" class="help-block">{{ $errors->first('umur') }}</span>
-									@endif
-								</div>
-								<div class='form-group @if($errors->has('jenis_kelamin')) has-error @endif'>
-									<label class='control-label'>Jenis Kelamin</label>
-									<br>
-									<label class='radio-inline'>
-										<input type='radio' name='jenis_kelamin' class='square-green' value='L'>
-										Laki-laki
-									</label>
-									<label class='radio-inline'>
-										<input type='radio' name='jenis_kelamin' class='square-green' value='P'>
-										Perempuan
-									</label>
-
-									@if ($errors->has('jenis_kelamin'))
-										<span for="jenis_kelamin" class="help-block">{{ $errors->first('jenis_kelamin') }}</span>
-									@endif
-								</div>	
-								<div class='form-group @if($errors->has('pendidikan')) has-error @endif'>
-									<label class='control-label'>Pendidikan/Kursus</label>
-									<input type='text' placeholder='Pendidikan/Kursus' class='form-control limited' id='pendidikan' name='pendidikan' maxlength='100' value='@if(count($errors) > 0){{old('pendidikan')}}@endif'
-									required>
-
-									@if ($errors->has('pendidikan'))
-										<span for="pendidikan" class="help-block">{{ $errors->first('pendidikan') }}</span>
-									@endif
-								</div>	
-								<div class='form-group @if($errors->has('bidang')) has-error @endif'>
-									<label class='control-label'>Bidang</label>
-									<input type='text' placeholder='Bidang' class='form-control limited' id='bidang' name='bidang' maxlength='100' value='@if(count($errors) > 0){{old('bidang')}}@endif'
-									required>
-
-									@if ($errors->has('bidang'))
-										<span for="bidang" class="help-block">{{ $errors->first('bidang') }}</span>
-									@endif
-								</div>		
-								<div class='form-group'>
-									<label class='control-label'>Alamat</label>
-									<textarea class='form-control limited' id='alamat' cols='10' rows='4' name='alamat' style='height:75px; resize:none;' maxlength='160'>@if(count($errors) > 0){{old('alamat')}}@endif</textarea>
-								</div>	
-								<div class='form-group'>
-									<label class='control-label'>Keterangan</label>
-									<textarea class='form-control limited' id='keterangan' cols='10' rows='4' name='keterangan' style='height:75px; resize:none;' maxlength='160'>@if(count($errors) > 0){{old('keterangan')}}@endif</textarea>
-								</div>				
-							</div>
+							@if ($errors->has('umur'))
+								<span for="umur" class="help-block">{{ $errors->first('umur') }}</span>
+							@endif
 						</div>
+						<div class='form-group @if($errors->has('jenis_kelamin')) has-error @endif'>
+							<label class='control-label'>Jenis Kelamin</label>
+							<br>
+							<label class='radio-inline'>
+								<input type='radio' name='jenis_kelamin' class='square-green' value='L'>
+								Laki-laki
+							</label>
+							<label class='radio-inline'>
+								<input type='radio' name='jenis_kelamin' class='square-green' value='P'>
+								Perempuan
+							</label>
+
+							@if ($errors->has('jenis_kelamin'))
+								<span for="jenis_kelamin" class="help-block">{{ $errors->first('jenis_kelamin') }}</span>
+							@endif
+						</div>	
+						<div class='form-group @if($errors->has('pendidikan')) has-error @endif'>
+							<label class='control-label'>Pendidikan/Kursus</label>
+							<input type='text' placeholder='Pendidikan/Kursus' class='form-control limited' id='pendidikan' name='pendidikan' maxlength='100' value='@if(count($errors) > 0){{old('pendidikan')}}@endif'
+							required>
+
+							@if ($errors->has('pendidikan'))
+								<span for="pendidikan" class="help-block">{{ $errors->first('pendidikan') }}</span>
+							@endif
+						</div>	
+						<div class='form-group @if($errors->has('bidang')) has-error @endif'>
+							<label class='control-label'>Bidang</label>
+							<input type='text' placeholder='Bidang' class='form-control limited' id='bidang' name='bidang' maxlength='100' value='@if(count($errors) > 0){{old('bidang')}}@endif'
+							required>
+
+							@if ($errors->has('bidang'))
+								<span for="bidang" class="help-block">{{ $errors->first('bidang') }}</span>
+							@endif
+						</div>		
+						<div class='form-group'>
+							<label class='control-label'>Alamat</label>
+							<textarea class='form-control limited' id='alamat' cols='10' rows='4' name='alamat' style='height:75px; resize:none;' maxlength='160'>@if(count($errors) > 0){{old('alamat')}}@endif</textarea>
+						</div>	
+						<div class='form-group'>
+							<label class='control-label'>Keterangan</label>
+							<textarea class='form-control limited' id='keterangan' cols='10' rows='4' name='keterangan' style='height:75px; resize:none;' maxlength='160'>@if(count($errors) > 0){{old('keterangan')}}@endif</textarea>
+						</div>				
 					</div>
-					<div class="modal-footer">				
-						<input name="simpan" value="Simpan" type="submit" class="btn btn-green">
-					</div>
-				</form>
+				</div>
 			</div>
-		</div>
+			<div class="modal-footer">				
+				<input name="simpan" value="Simpan" type="submit" class="btn btn-green">
+			</div>
+		</form>
 	</div>
 
 @endsection

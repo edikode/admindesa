@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
+use App\Models\User;
+
 class LoginController extends Controller
 {
     /*
@@ -20,7 +22,7 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
+   
     use AuthenticatesUsers;
 
     /**
@@ -46,18 +48,18 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return void
      */
-    protected function validateLogin(Request $request)
-    {
-        $this->validate($request, [
-            $this->username() => [
-                'required','string',
-                Rule::exists('users')->where(function($query) {
-                    $query->where('status', true);
-                })
-            ],
-            'password' => 'required',
-        ], [
-            $this->username() . '.exists' => 'Akun anda sudah tidak aktif'
-        ]);
-    }
+    // protected function validateLogin(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         $this->username() => [
+    //             'required','string',
+    //             Rule::exists('users')->where(function($query) {
+    //                 $query->where('status', true);
+    //             })
+    //         ],
+    //         'password' => 'required',
+    //     ], [
+    //         $this->username() . '.exists' => 'Akun anda sudah tidak aktif'
+    //     ]);
+    // }
 }

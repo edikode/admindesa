@@ -6,6 +6,10 @@ Auth::routes();
 Route::get('/', function(){
 	return redirect('home');
 });
+
+Route::get('registrasi', 'UserController@create')->name('registrasi');
+Route::post('simpan-registrasi', 'UserController@store');
+
 Route::get('home', 'Modul\HomeController@index')->name('home');
 
 Route::resource('data-peraturan-desa', 'Modul\DataPeraturanDesa');
@@ -24,8 +28,8 @@ Route::get('data-aparat-pemerintah-desa/cetak/{keywords}', 'Modul\DataAparatPeme
 Route::resource('data-tanah-kas-desa', 'Modul\DataTanahKasDesa');
 Route::get('data-tanah-kas-desa/cetak/{keywords}', 'Modul\DataTanahKasDesa@cetak');
 
-Route::resource('data-tanah-desa', 'Modul\DataTanahDesa');
-Route::get('data-tanah-desa/cetak/{keywords}', 'Modul\DataTanahDesa@cetak');
+Route::resource('data-tanah-di-desa', 'Modul\DataTanahDesa');
+Route::get('data-tanah-di-desa/cetak/{keywords}', 'Modul\DataTanahDesa@cetak');
 
 Route::resource('data-agenda', 'Modul\DataAgenda');
 Route::get('data-agenda/cetak/{keywords}', 'Modul\DataAgenda@cetak');
@@ -44,8 +48,14 @@ Route::resource('data-mutasi-penduduk-desa', 'Modul\DataMutasiPenduduk');
 Route::post('data-mutasi-penduduk-desa/pengurangan', 'Modul\DataMutasiPenduduk@pengurangan');
 Route::get('data-mutasi-penduduk-desa/cetak/{keywords}', 'Modul\DataMutasiPenduduk@cetak');
 
+Route::resource('data-rekapitulasi-penduduk-akhir-bulan', 'Modul\DataRekapPenduduk');
+Route::get('data-rekapitulasi-penduduk-akhir-bulan/cetak/{keywords}', 'Modul\DataRekapPenduduk@cetak');
+
 Route::resource('data-penduduk-sementara', 'Modul\DataPendudukSementara');
 Route::get('data-penduduk-sementara/cetak/{keywords}', 'Modul\DataPendudukSementara@cetak');
+
+Route::resource('data-ktp-dan-kk', 'Modul\DataKTP');
+Route::get('data-ktp-dan-kk/cetak/{keywords}', 'Modul\DataKTP@cetak');
 
 // administrasi pembangunan
 Route::resource('rencana-kerja-pembangunan-desa', 'Modul\DataRencanaKerja');

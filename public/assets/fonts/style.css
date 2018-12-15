@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'clip-font';
 	src:url('fonts/clip-font.eot');
-	src:url('fonts/clip-font.eot@#iefix') format('embedded-opentype'),
+	src:url('fonts/clip-font.eot?#iefix') format('embedded-opentype'),
 		url('fonts/clip-font.woff') format('woff'),
 		url('fonts/clip-font.ttf') format('truetype'),
 		url('fonts/clip-font.svg#clip-font') format('svg');

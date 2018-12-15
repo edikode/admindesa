@@ -76,67 +76,63 @@
 		</div>		
 	</div>
 
-	<div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-crud">
-			<div class="modal-content">
-				<form action="{{url('inventaris-hasil-pembangunan')}}" method="post" enctype="multipart/form-data">
-					{{ csrf_field() }}
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Tambah Data Inventaris Hasil-Hasil Pembangunan</h4>
-					</div>		
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-md-12">
-								<div class='form-group @if($errors->has('nama')) has-error @endif'>
-									<label class='control-label'>Jenis/Nama Hasil Pembangunan</label>
-									<input type='text' placeholder='Jenis/Nama Hasil Pembangunan' class='form-control limited' id='nama' name='nama' maxlength='100' value='@if(count($errors) > 0){{old('nama')}}@endif'
-									required>
+	<div class="modal fade modal-crud" id="tambah" tabindex="-1" role="dialog" aria-hidden="true">
+		<form action="{{url('inventaris-hasil-pembangunan')}}" method="post" enctype="multipart/form-data">
+			{{ csrf_field() }}
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Tambah Data Inventaris Hasil-Hasil Pembangunan</h4>
+			</div>		
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class='form-group @if($errors->has('nama')) has-error @endif'>
+							<label class='control-label'>Jenis/Nama Hasil Pembangunan</label>
+							<input type='text' placeholder='Jenis/Nama Hasil Pembangunan' class='form-control limited' id='nama' name='nama' maxlength='100' value='@if(count($errors) > 0){{old('nama')}}@endif'
+							required>
 
-									@if ($errors->has('nama'))
-										<span for="nama" class="help-block">{{ $errors->first('nama') }}</span>
-									@endif
-								</div>
-								<div class='form-group @if($errors->has('volume')) has-error @endif'>
-									<label class='control-label'>Volume</label>
-									<input type='text' placeholder='Volume' class='form-control limited' id='volume' name='volume' maxlength='100' value='@if(count($errors) > 0){{old('volume')}}@endif'
-									required>
-
-									@if ($errors->has('volume'))
-										<span for="volume" class="help-block">{{ $errors->first('volume') }}</span>
-									@endif
-								</div>
-								<div class='form-group @if($errors->has('biaya')) has-error @endif'>
-									<label class='control-label'>Biaya</label>
-									
-									<input type='number' placeholder='Biaya' class='form-control limited' id='biaya' name='biaya' maxlength='10' value='@if(count($errors) > 0){{old('biaya')}}@endif' required>
-
-									@if ($errors->has('biaya'))
-										<span for="biaya" class="help-block">{{ $errors->first('biaya') }}</span>
-									@endif
-								</div>
-								<div class='form-group @if($errors->has('lokasi')) has-error @endif'>
-									<label class='control-label'>Lokasi</label>
-									<input type='text' placeholder='Lokasi' class='form-control limited' id='lokasi' name='lokasi' maxlength='100' value='@if(count($errors) > 0){{old('lokasi')}}@endif'
-									required>
-
-									@if ($errors->has('lokasi'))
-										<span for="lokasi" class="help-block">{{ $errors->first('lokasi') }}</span>
-									@endif
-								</div>
-								<div class='form-group'>
-									<label class='control-label'>Keterangan</label>
-									<textarea class='form-control limited' id='keterangan' cols='10' rows='4' name='keterangan' style='height:75px; resize:none;' maxlength='160'>@if(count($errors) > 0){{old('keterangan')}}@endif</textarea>
-								</div>	
-							</div>
+							@if ($errors->has('nama'))
+								<span for="nama" class="help-block">{{ $errors->first('nama') }}</span>
+							@endif
 						</div>
+						<div class='form-group @if($errors->has('volume')) has-error @endif'>
+							<label class='control-label'>Volume</label>
+							<input type='text' placeholder='Volume' class='form-control limited' id='volume' name='volume' maxlength='100' value='@if(count($errors) > 0){{old('volume')}}@endif'
+							required>
+
+							@if ($errors->has('volume'))
+								<span for="volume" class="help-block">{{ $errors->first('volume') }}</span>
+							@endif
+						</div>
+						<div class='form-group @if($errors->has('biaya')) has-error @endif'>
+							<label class='control-label'>Biaya</label>
+							
+							<input type='number' placeholder='Biaya' class='form-control limited' id='biaya' name='biaya' maxlength='10' value='@if(count($errors) > 0){{old('biaya')}}@endif' required>
+
+							@if ($errors->has('biaya'))
+								<span for="biaya" class="help-block">{{ $errors->first('biaya') }}</span>
+							@endif
+						</div>
+						<div class='form-group @if($errors->has('lokasi')) has-error @endif'>
+							<label class='control-label'>Lokasi</label>
+							<input type='text' placeholder='Lokasi' class='form-control limited' id='lokasi' name='lokasi' maxlength='100' value='@if(count($errors) > 0){{old('lokasi')}}@endif'
+							required>
+
+							@if ($errors->has('lokasi'))
+								<span for="lokasi" class="help-block">{{ $errors->first('lokasi') }}</span>
+							@endif
+						</div>
+						<div class='form-group'>
+							<label class='control-label'>Keterangan</label>
+							<textarea class='form-control limited' id='keterangan' cols='10' rows='4' name='keterangan' style='height:75px; resize:none;' maxlength='160'>@if(count($errors) > 0){{old('keterangan')}}@endif</textarea>
+						</div>	
 					</div>
-					<div class="modal-footer">				
-						<input name="simpan" value="Simpan" type="submit" class="btn btn-green">
-					</div>
-				</form>
+				</div>
 			</div>
-		</div>
+			<div class="modal-footer">				
+				<input name="simpan" value="Simpan" type="submit" class="btn btn-green">
+			</div>
+		</form>
 	</div>
 
 @endsection

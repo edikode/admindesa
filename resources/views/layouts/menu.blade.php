@@ -17,7 +17,7 @@
 				'data-aparat-pemerintah-desa', Request::is('data-aparat-pemerintah-desa/*'),
 				'data-agenda', Request::is('data-agenda/*'),
 				'data-tanah-kas-desa', Request::is('data-tanah-kas-desa/*'),
-				'data-tanah-desa', Request::is('data-tanah-desa/*'),
+				'data-tanah-di-desa', Request::is('data-tanah-di-desa/*'),
 				'data-ekspedisi', Request::is('data-ekspedisi/*'),
 				'data-lembaran-desa', Request::is('data-lembaran-desa/*'),
 				'data-keputusan-kepala-desa', Request::is('data-keputusan-kepala-desa/*')
@@ -42,8 +42,8 @@
 					<li class="{{ set_active(['data-tanah-kas-desa', Request::is('data-tanah-kas-desa/*')]) }}">
 						<a href="{{ url('/data-tanah-kas-desa') }}"><span class='title'>Data Tanah Milik Desa/Tanah Kas Desa</span></a>
 					</li>
-					<li class="{{ set_active(['data-tanah-desa', Request::is('data-tanah-desa/*')]) }}">
-						<a href="{{ url('/data-tanah-desa') }}"><span class='title'>Data Tanah di Desa</span></a>
+					<li class="{{ set_active(['data-tanah-di-desa', Request::is('data-tanah-di-desa/*')]) }}">
+						<a href="{{ url('/data-tanah-di-desa') }}"><span class='title'>Data Tanah di Desa</span></a>
 					</li>
 					<li class="{{ set_active(['data-agenda', Request::is('data-agenda/*')]) }}">
 						<a href="{{ url('/data-agenda') }}"><span class='title'>Agenda</span></a>
@@ -60,7 +60,8 @@
 				'data-induk-penduduk-desa', Request::is('data-induk-penduduk-desa/*'),
 				'data-mutasi-penduduk-desa', Request::is('data-mutasi-penduduk-desa/*'),
 				'data-rekapitulasi-penduduk-akhir-bulan', Request::is('data-rekapitulasi-penduduk-akhir-bulan/*'),
-				'data-penduduk-sementara', Request::is('data-penduduk-sementara/*')
+				'data-penduduk-sementara', Request::is('data-penduduk-sementara/*'),
+				'data-ktp-dan-kk', Request::is('data-ktp-dan-kk/*')
 			]) }}">
 				<a href="javascript:void(0)"><i class="clip-book"></i>
 					<span class="title">Administrasi Penduduk</span><i class="icon-arrow"></i>
@@ -73,14 +74,14 @@
 					<li class="{{ set_active(['data-mutasi-penduduk-desa', Request::is('data-mutasi-penduduk-desa/*')]) }}">
 						<a href="{{ url('/data-mutasi-penduduk-desa') }}"><span class='title'>Data Mutasi Penduduk Desa</span></a>
 					</li>
-					<li class="">
-						<a href="#"><span class='title'>Data Rekapitulasi Jumlah Penduduk Akhir Bulan</span></a>
+					<li class="{{ set_active(['data-rekapitulasi-penduduk-akhir-bulan', Request::is('data-rekapitulasi-penduduk-akhir-bulan/*')]) }}">
+						<a href="data-rekapitulasi-penduduk-akhir-bulan"><span class='title'>Data Rekapitulasi Jumlah Penduduk Akhir Bulan</span></a>
 					</li>
 					<li class="{{ set_active(['data-penduduk-sementara', Request::is('data-penduduk-sementara/*')]) }}">
 						<a href="{{ url('/data-penduduk-sementara') }}"><span class='title'>Data Penduduk Sementara</span></a>
 					</li>
-					<li class="">
-						<a href="#"><span class='title'>Kartu Tanda Penduduk dan Buku Kartu Keluarga </span></a>
+					<li class="{{ set_active(['data-ktp-dan-kk', Request::is('data-ktp-dan-kk/*')]) }}">
+						<a href="{{ url('/data-ktp-dan-kk') }}"><span class='title'>Buku Kartu Tanda Penduduk dan Kartu Keluarga </span></a>
 					</li>
 				</ul>
 			</li>

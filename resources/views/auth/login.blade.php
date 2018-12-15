@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <span class="input-icon">
                             <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus>
-                            <i class="icon-user"></i> 
+                            <i class=""></i> 
                         </span>
                     </div>
                     <div class="form-group">
@@ -29,7 +29,10 @@
                             </a>
                         </span>
                     </div>
-                    <div class="form-actions">                          
+                    <div class="form-actions">   
+                        <a class="btn btn-orange" href="{{url('/registrasi')}}">
+                            <i class="fa fa-circle-arrow-left"></i> Registrasi
+                        </a>                        
                         <button name="submit" type="submit" class="btn btn-bricky pull-right">
                             Login <i class="icon-circle-arrow-right"></i>
                         </button>

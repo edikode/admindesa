@@ -78,11 +78,14 @@
 									<div class="col-md-4">
 										<div class='form-group @if($errors->has('tgl_lahir')) has-error @endif'>
 											<label class='control-label'>Tanggal Lahir</label>
-											{{-- <div class="input-group">
-												<input type="text" data-date-format="dd-mm-yyyy" data-date-viewmode="years" class="form-control date-picker">
+											<div class="input-group">
+												<input name="tgl_lahir" placeholder="Tanggal Lahir" type="text" data-date-format="dd-mm-yyyy" data-date-viewmode="years" class="form-control date-picker" value="@if(count($errors) > 0){{old('tgl_lahir')}}@else{{tgl_id($pd->tgl_lahir)}}@endif" required>
 												<span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
-											</div> --}}
-											<input style="width:150px" type="date" name="tgl_lahir" id="tgl_lahir" class="form-control" value="@if(count($errors) > 0){{old('tgl_lahir')}}@else{{$pd->tgl_lahir}}@endif" required>
+											</div>
+
+											@if ($errors->has('tgl_lahir'))
+												<span for="tgl_lahir" class="help-block">{{ $errors->first('tgl_lahir') }}</span>
+											@endif
 										</div>
 									</div>
 								</div>
@@ -147,8 +150,76 @@
 										<span for="nik" class="help-block">{{ $errors->first('kewarganegaraan') }}</span>
 									@endif
 								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<div class='form-group @if($errors->has('rtrw')) has-error @endif'>
+											<label class='control-label'>RT/RW</label>
+											<input type='text' placeholder='RT/RW' class='form-control limited' id='rtrw' name='rtrw' maxlength='100' value='@if(count($errors) > 0){{old('rtrw')}}@else{{$pd->rtrw}}@endif'
+											required>
+
+											@if ($errors->has('rtrw'))
+												<span for="rtrw" class="help-block">{{ $errors->first('rtrw') }}</span>
+											@endif
+										</div>	
+									</div>
+									<div class="col-md-4">
+										<div class='form-group @if($errors->has('dusun')) has-error @endif'>
+											<label class='control-label'>Dusun</label>
+											<input type='text' placeholder='Dusun' class='form-control limited' id='dusun' name='dusun' maxlength='100' value='@if(count($errors) > 0){{old('dusun')}}@else{{$pd->dusun}}@endif'
+											required>
+
+											@if ($errors->has('dusun'))
+												<span for="dusun" class="help-block">{{ $errors->first('dusun') }}</span>
+											@endif
+										</div>	
+									</div>
+									<div class="col-md-4">
+										<div class='form-group @if($errors->has('desa')) has-error @endif'>
+											<label class='control-label'>Desa</label>
+											<input type='text' placeholder='Desa' class='form-control limited' id='desa' name='desa' maxlength='100' value='@if(count($errors) > 0){{old('desa')}}@else{{$pd->desa}}@endif'
+											required>
+
+											@if ($errors->has('desa'))
+												<span for="desa" class="help-block">{{ $errors->first('desa') }}</span>
+											@endif
+										</div>	
+									</div>
+									<div class="col-md-4">
+										<div class='form-group @if($errors->has('kecamatan')) has-error @endif'>
+											<label class='control-label'>Kecamatan</label>
+											<input type='text' placeholder='Kecamatan' class='form-control limited' id='kecamatan' name='kecamatan' maxlength='100' value='@if(count($errors) > 0){{old('kecamatan')}}@else{{$pd->kecamatan}}@endif'
+											required>
+
+											@if ($errors->has('kecamatan'))
+												<span for="kecamatan" class="help-block">{{ $errors->first('kecamatan') }}</span>
+											@endif
+										</div>	
+									</div>
+									<div class="col-md-4">
+										<div class='form-group @if($errors->has('kabupaten')) has-error @endif'>
+											<label class='control-label'>Kabupaten</label>
+											<input type='text' placeholder='Kabupaten' class='form-control limited' id='kabupaten' name='kabupaten' maxlength='100' value='@if(count($errors) > 0){{old('kabupaten')}}@else{{$pd->kabupaten}}@endif'
+											required>
+
+											@if ($errors->has('kabupaten'))
+												<span for="kabupaten" class="help-block">{{ $errors->first('kabupaten') }}</span>
+											@endif
+										</div>	
+									</div>
+									<div class="col-md-4">
+										<div class='form-group @if($errors->has('kodepos')) has-error @endif'>
+											<label class='control-label'>Kode Pos</label>
+											<input type='text' placeholder='Kode Pos' class='form-control limited' id='kodepos' name='kodepos' maxlength='100' value='@if(count($errors) > 0){{old('kodepos')}}@else{{$pd->kodepos}}@endif'
+											required>
+
+											@if ($errors->has('kodepos'))
+												<span for="kodepos" class="help-block">{{ $errors->first('kodepos') }}</span>
+											@endif
+										</div>	
+									</div>
+								</div>
 								<div class='form-group'>
-									<label class='control-label'>Alamat</label>
+									<label class='control-label'>Alamat Lengkap</label>
 									<textarea class='form-control limited' id='alamat' cols='10' rows='4' name='alamat' style='height:75px; resize:none;' maxlength='160'>@if(count($errors) > 0){{old('alamat')}}@else{{$pd->alamat}}@endif</textarea>
 								</div>	
 								<div class='form-group @if($errors->has('kedudukan')) has-error @endif'>

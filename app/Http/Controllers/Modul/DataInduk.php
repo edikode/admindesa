@@ -49,19 +49,25 @@ class DataInduk extends Controller
         $pd = new Induk;
 
         $this->validate($request, [
-            'nik'      => 'required|unique:data_induk,nik,'.$pd['id'],
+            'nik'      => 'required|numeric|unique:data_induk,nik,'.$pd['id'],
         ]);
 
         $pd->nama = $request->nama;
         $pd->jenis_kelamin = $request->jenis_kelamin;
         $pd->status = $request->status;
         $pd->tmp_lahir = $request->tmp_lahir;
-        $pd->tgl_lahir = $request->tgl_lahir;
+        $pd->tgl_lahir = tgl_en($request->tgl_lahir);
         $pd->agama = $request->agama;
         $pd->pendidikan_terakhir = $request->pendidikan_terakhir;
         $pd->pekerjaan = $request->pekerjaan;
         $pd->dapat_membaca = $request->dapat_membaca;
         $pd->kewarganegaraan = $request->kewarganegaraan;
+        $pd->rtrw = $request->rtrw;
+        $pd->dusun = $request->dusun;
+        $pd->desa = $request->desa;
+        $pd->kecamatan = $request->kecamatan;
+        $pd->kabupaten = $request->kabupaten;
+        $pd->kodepos = $request->kodepos;
         $pd->alamat = $request->alamat;
         $pd->kedudukan = $request->kedudukan;
         $pd->nik = $request->nik;
@@ -111,19 +117,25 @@ class DataInduk extends Controller
         $pd = Induk::findorfail($id);
 
         $this->validate($request, [
-            'nik'      => 'required|unique:data_induk,nik,'.$pd['id'],
+            'nik'      => 'required|numeric|unique:data_induk,nik,'.$pd['id'],
         ]);
 
         $pd->nama = $request->nama;
         $pd->jenis_kelamin = $request->jenis_kelamin;
         $pd->status = $request->status;
         $pd->tmp_lahir = $request->tmp_lahir;
-        $pd->tgl_lahir = $request->tgl_lahir;
+        $pd->tgl_lahir = tgl_en($request->tgl_lahir);
         $pd->agama = $request->agama;
         $pd->pendidikan_terakhir = $request->pendidikan_terakhir;
         $pd->pekerjaan = $request->pekerjaan;
         $pd->dapat_membaca = $request->dapat_membaca;
         $pd->kewarganegaraan = $request->kewarganegaraan;
+        $pd->rtrw = $request->rtrw;
+        $pd->dusun = $request->dusun;
+        $pd->desa = $request->desa;
+        $pd->kecamatan = $request->kecamatan;
+        $pd->kabupaten = $request->kabupaten;
+        $pd->kodepos = $request->kodepos;
         $pd->alamat = $request->alamat;
         $pd->kedudukan = $request->kedudukan;
         $pd->nik = $request->nik;
