@@ -78,6 +78,19 @@ span.input-help > input {
 	z-index: 2;
 }
 
+.input-icon > [class*="fa-"] {
+	bottom: 0;
+	color: #909090;
+	display: inline-block;
+	font-size: 14px;
+	left: 5px;
+	line-height: 35px;
+	padding: 0 3px;
+	position: absolute;
+	top: 0;
+	z-index: 2;
+}
+
 .input-icon.input-icon-right > [class*="icon-"] {
 	left: auto;
 	right: 4px;

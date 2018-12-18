@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('main')
-<div class="main-login col-sm-4 col-sm-offset-4">
+    <div class="main-login col-sm-4 col-sm-offset-4">
         <div class="logo"><img src="{{asset('assets/images/logo.png')}}">
         </div>
 
@@ -17,24 +17,27 @@
                     <div class="form-group">
                         <span class="input-icon">
                             <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus>
-                            <i class=""></i> 
+                            <i class="fa fa-user"></i> 
                         </span>
                     </div>
                     <div class="form-group">
                         <span class="input-icon">
                             <input type="password" class="form-control password" name="password" placeholder="Password">
-                            <i class="icon-lock"></i>
+                            <i class="fa fa-lock"></i>
                             <a class="forgot" href="{{ url('/password/reset') }}">
                                 Lupa Password?
                             </a>
                         </span>
                     </div>
-                    <div class="form-actions">   
-                        <a class="btn btn-orange" href="{{url('/registrasi')}}">
-                            <i class="fa fa-circle-arrow-left"></i> Registrasi
-                        </a>                        
+                    <div class="form-actions"> 
+                        @if (JmlAdmin() < 1)
+                            <a class="btn btn-orange" href="{{url('/registrasi')}}">
+                                <i class="fa fa-group"></i> Registrasi
+                            </a> 
+                        @endif 
+                                               
                         <button name="submit" type="submit" class="btn btn-bricky pull-right">
-                            Login <i class="icon-circle-arrow-right"></i>
+                            Login <i class="fa fa-sign-in"></i>
                         </button>
                     </div>                      
                 </fieldset>

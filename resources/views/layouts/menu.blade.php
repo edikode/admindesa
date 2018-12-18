@@ -59,7 +59,7 @@
 			<li class="{{ set_active([
 				'data-induk-penduduk-desa', Request::is('data-induk-penduduk-desa/*'),
 				'data-mutasi-penduduk-desa', Request::is('data-mutasi-penduduk-desa/*'),
-				'data-rekapitulasi-penduduk-akhir-bulan', Request::is('data-rekapitulasi-penduduk-akhir-bulan/*'),
+				'data-rekapitulasi-penduduk', Request::is('data-rekapitulasi-penduduk/*'),
 				'data-penduduk-sementara', Request::is('data-penduduk-sementara/*'),
 				'data-ktp-dan-kk', Request::is('data-ktp-dan-kk/*')
 			]) }}">
@@ -74,8 +74,8 @@
 					<li class="{{ set_active(['data-mutasi-penduduk-desa', Request::is('data-mutasi-penduduk-desa/*')]) }}">
 						<a href="{{ url('/data-mutasi-penduduk-desa') }}"><span class='title'>Data Mutasi Penduduk Desa</span></a>
 					</li>
-					<li class="{{ set_active(['data-rekapitulasi-penduduk-akhir-bulan', Request::is('data-rekapitulasi-penduduk-akhir-bulan/*')]) }}">
-						<a href="data-rekapitulasi-penduduk-akhir-bulan"><span class='title'>Data Rekapitulasi Jumlah Penduduk Akhir Bulan</span></a>
+					<li class="{{ set_active(['data-rekapitulasi-penduduk', Request::is('data-rekapitulasi-penduduk/*')]) }}">
+						<a href="data-rekapitulasi-penduduk"><span class='title'>Data Rekapitulasi Jumlah Penduduk Akhir Bulan</span></a>
 					</li>
 					<li class="{{ set_active(['data-penduduk-sementara', Request::is('data-penduduk-sementara/*')]) }}">
 						<a href="{{ url('/data-penduduk-sementara') }}"><span class='title'>Data Penduduk Sementara</span></a>

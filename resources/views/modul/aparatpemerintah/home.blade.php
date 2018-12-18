@@ -118,7 +118,7 @@
 						</div>	
 						<div class='form-group @if($errors->has('nip')) has-error @endif'>
 							<label class='control-label'>NIP</label>
-							<input type='text' placeholder='NIP' class='form-control limited' id='nip' name='nip' maxlength='100' value='@if(count($errors) > 0){{old('nip')}}@endif'>
+							<input type='text' placeholder='NIP' class='form-control limited' id='nip' name='nip' maxlength='16' value='@if(count($errors) > 0){{old('nip')}}@endif'>
 
 							@if ($errors->has('nip'))
 								<span for="nip" class="help-block">{{ $errors->first('nip') }}</span>

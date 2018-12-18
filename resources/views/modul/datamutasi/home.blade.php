@@ -298,15 +298,13 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="input-group">
-							<input type="text" data-date-format="dd-mm-yyyy" data-date-viewmode="years" class="form-control date-picker" style="z-index: 1600 !important;">
-							<span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
-						</div>
+						
 						<div class='form-group @if($errors->has('nama')) has-error @endif'>
 							<label class='control-label'>Nama / NIK</label>
 							<select name="nama" id="nama" class="form-control search-select">
 								<option value="">-- Pilih --</option>
 								@foreach ($datainduk as $d)
+									@php if(CekDataMutasi($d->id)){ continue; } @endphp
 									<option value="{{$d->id}}">{{$d->nama}}/{{$d->nik}}</option>
 								@endforeach
 							</select>
@@ -331,10 +329,12 @@
 								<span for="jenis" class="help-block">{{ $errors->first('jenis') }}</span>
 							@endif
 						</div>	
-						<div class='form-group @if($errors->has('tgl_lahir')) has-error @endif'>
+						<div class='form-group @if($errors->has('tanggal')) has-error @endif'>
 							<label class='control-label'>Tanggal</label>
-							
-							<input style="width:150px" type="date" name="tanggal" id="tanggal" class="form-control" value="@if(count($errors) > 0){{old('tanggal')}}@endif" required>
+							<div class="input-group">
+								<input type="text" name="tanggal" value="@if(count($errors) > 0){{old('tanggal')}}@endif" data-date-format="dd-mm-yyyy" data-date-viewmode="years" class="form-control date-picker">
+								<span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
+							</div>
 						</div>
 						<div class='form-group'>
 							<label class='control-label'>Lokasi</label>

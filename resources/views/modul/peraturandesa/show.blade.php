@@ -27,39 +27,39 @@
 				<tbody>
 					<tr>
 						<td width="40%">Jenis Peraturan Di Desa</td>
-						<td>{{$pd->jenis}}</td>
+						<td>{{$data->jenis}}</td>
 					</tr>
 					<tr>
 						<td>Nomor Dan Tanggal Ditetapkan</td>
-						<td>{{$pd->nomor_ditetapkan}}</td>
+						<td>{{$data->nomor_ditetapkan}}</td>
 					</tr>
 					<tr>
 						<td>Tentang</td>
-						<td>{{$pd->tentang}}</td>
+						<td>{{$data->tentang}}</td>
 					</tr>
 					<tr>
 						<td>Uraian Singkat</td>
-						<td>{{$pd->uraian}}</td>
+						<td>{{$data->uraian}}</td>
 					</tr>
 					<tr>
 						<td>Tanggal Kesepakatan Peraturan Desa</td>
-						<td>{{$pd->tanggal_kesepakatan}}</td>
+						<td>{{$data->tanggal_kesepakatan}}</td>
 					</tr>
 					<tr>
 						<td>Nomor Dan Tanggal DiLaporkan</td>
-						<td>{{$pd->tanggal_dilaporkan}}</td>
+						<td>{{$data->tanggal_dilaporkan}}</td>
 					</tr>
 					<tr>
 						<td>Nomor Dan Tanggal Diundangkan Dalam Lembaran Desa</td>
-						<td>{{$pd->tanggal_diundang}}</td>
+						<td>{{$data->tanggal_diundang}}</td>
 					</tr>
 					<tr>
 						<td>Nomor Dan Tanggal Diundangkan Dalam Berita Desa</td>
-						<td>{{$pd->tanggal_berita_desa}}</td>
+						<td>{{$data->tanggal_berita_desa}}</td>
 					</tr>
 					<tr>
 						<td>Keterangan</td>
-						<td>{{$pd->keterangan}}</td>
+						<td>{{$data->keterangan}}</td>
 					</tr>
 					
 				</tbody>

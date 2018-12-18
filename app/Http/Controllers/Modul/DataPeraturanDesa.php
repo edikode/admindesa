@@ -46,23 +46,23 @@ class DataPeraturanDesa extends Controller
      */
     public function store(Request $request)
     {
-        $pd = new PeraturanDesa;
+        $data = new PeraturanDesa;
 
         $this->validate($request, [
             'jenis'      => 'max:100',
         ]);
 
-        $pd->jenis = $request->jenis;
-        $pd->nomor_ditetapkan = $request->nomor_ditetapkan;
-        $pd->tentang = $request->tentang;
-        $pd->uraian = $request->uraian;
-        $pd->tanggal_kesepakatan = $request->tanggal_kesepakatan;
-        $pd->tanggal_dilaporkan = $request->tanggal_dilaporkan;
-        $pd->tanggal_diundang = $request->tanggal_diundang;
-        $pd->tanggal_berita_desa = $request->tanggal_berita_desa;
-        $pd->keterangan = $request->keterangan;
+        $data->jenis = $request->jenis;
+        $data->nomor_ditetapkan = $request->nomor_ditetapkan;
+        $data->tentang = $request->tentang;
+        $data->uraian = $request->uraian;
+        $data->tanggal_kesepakatan = tgl_en($request->tanggal_kesepakatan);
+        $data->tanggal_dilaporkan = $request->tanggal_dilaporkan;
+        $data->tanggal_diundang = $request->tanggal_diundang;
+        $data->tanggal_berita_desa = $request->tanggal_berita_desa;
+        $data->keterangan = $request->keterangan;
 
-        $pd->save();
+        $data->save();
 
         Session::flash('pesan_sukses', 'Data Peraturan Desa berhasil di Ditambah');
 
@@ -77,8 +77,8 @@ class DataPeraturanDesa extends Controller
      */
     public function show($id)
     {
-        $pd = PeraturanDesa::findorfail($id);
-        return view('modul/peraturandesa/show', compact('pd'));
+        $data = PeraturanDesa::findorfail($id);
+        return view('modul/peraturandesa/show', compact('data'));
     }
 
     /**
@@ -89,8 +89,8 @@ class DataPeraturanDesa extends Controller
      */
     public function edit($id)
     {
-        $pd = PeraturanDesa::findorfail($id);
-        return view('modul/peraturandesa/edit', compact('pd'));
+        $data = PeraturanDesa::findorfail($id);
+        return view('modul/peraturandesa/edit', compact('data'));
     }
 
     /**
@@ -102,27 +102,27 @@ class DataPeraturanDesa extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pd = PeraturanDesa::findorfail($id);
+        $data = PeraturanDesa::findorfail($id);
 
         $this->validate($request, [
             'jenis'      => 'max:100',
         ]);
 
-        $pd->jenis = $request->jenis;
-        $pd->nomor_ditetapkan = $request->nomor_ditetapkan;
-        $pd->tentang = $request->tentang;
-        $pd->uraian = $request->uraian;
-        $pd->tanggal_kesepakatan = $request->tanggal_kesepakatan;
-        $pd->tanggal_dilaporkan = $request->tanggal_dilaporkan;
-        $pd->tanggal_diundang = $request->tanggal_diundang;
-        $pd->tanggal_berita_desa = $request->tanggal_berita_desa;
-        $pd->keterangan = $request->keterangan;
+        $data->jenis = $request->jenis;
+        $data->nomor_ditetapkan = $request->nomor_ditetapkan;
+        $data->tentang = $request->tentang;
+        $data->uraian = $request->uraian;
+        $data->tanggal_kesepakatan = tgl_en($request->tanggal_kesepakatan);
+        $data->tanggal_dilaporkan = $request->tanggal_dilaporkan;
+        $data->tanggal_diundang = $request->tanggal_diundang;
+        $data->tanggal_berita_desa = $request->tanggal_berita_desa;
+        $data->keterangan = $request->keterangan;
 
-        $pd->save();
+        $data->save();
 
         Session::flash('pesan_sukses', 'Data Peraturan Desa berhasil di Diperbarui');
 
-        return redirect('data-peraturan-desa/'.$pd->id.'/edit');
+        return redirect('data-peraturan-desa/'.$data->id.'/edit');
     }
 
     /**
@@ -133,21 +133,21 @@ class DataPeraturanDesa extends Controller
      */
     public function destroy($id)
     {
-        $pd = PeraturanDesa::findorfail($id);
+        $data = PeraturanDesa::findorfail($id);
 
-        $pd->delete();
-        Session::flash('pesan_sukses', 'Data Peraturan Desa Nomor "'. $pd->nomor_ditetapkan .'" Berhasil Dihapus');
+        $data->delete();
+        Session::flash('pesan_sukses', 'Data Peraturan Desa Nomor "'. $data->nomor_ditetapkan .'" Berhasil Dihapus');
         
         return redirect('data-peraturan-desa');
     }
 
     public function cetak($keyword)
     {
-        $pd = PeraturanDesa::all();
-        $jumlah = count($pd);
+        $data = PeraturanDesa::all();
+        $jumlah = count($data);
 
-        $pdf = PDF::loadView('pdf/data-peraturan-desa',compact('pd','keyword'))
-                    ->setPaper('a4');
+        $pdf = PDF::loadView('pdf/data-peraturan-desa',compact('data','keyword'))
+                    ->setPaper('a4','landscape');
 
         return $pdf->stream();
         // return $pdf->download('Data Peraturan Daerah.pdf');

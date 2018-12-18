@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\MutasiPenduduk;
 use App\Models\Induk;
+use App\Models\V_RekapDusun;
 
 use Session;
 use PDF;
@@ -24,17 +25,15 @@ class DataRekapPenduduk extends Controller
      */
     public function index()
     {
-        $filter = "";
-        $keyword = "";
-        $datainduk = Induk::all();
-        $rekappenduduk = DB::table('data_induk')
-            ->join('mutasi_penduduk', 'data_induk.id', '=', 'mutasi_penduduk.data_induk_id')
-            ->select('data_induk.nama', DB::raw('count(data_induk.nama) as total'))
-            ->groupBy('data_induk.dusun')
-            ->get();
+        $bulan = date('m');
+        $tahun = date('Y');
+        // $awalbulan = $tahun.'-'.$bulan.'-01';
+        $awalbulan = $tahun.'-12-01';
+        $akhirbulan = date('Y-m-t', strtotime($awalbulan));
 
-        dd($rekappenduduk);
-        return view('modul/rekappenduduk/home', compact('rekappenduduk','datainduk','filter','keyword'));
+        $rekappenduduk = Induk::Select('dusun',DB::raw('COUNT(dusun) as jumlah'))->GroupBy('dusun')->whereBetween('created_at',array('2018-11-1',$akhirbulan))->get();
+        
+        return view('modul/rekappenduduk/home', compact('rekappenduduk','bulan','tahun','awalbulan','akhirbulan'));
     }
 
     /**
@@ -91,7 +90,7 @@ class DataRekapPenduduk extends Controller
 
         Session::flash('pesan_sukses', 'Data Mutasi Penduduk Desa berhasil di Ditambah');
 
-        return redirect('data-mutasi-penduduk-desa');
+        return redirect('data-rekapitulasi-penduduk');
     }
 
     public function pengurangan(Request $request)
@@ -118,7 +117,7 @@ class DataRekapPenduduk extends Controller
 
         Session::flash('pesan_sukses', 'Data Mutasi Penduduk Desa berhasil di Ditambah');
 
-        return redirect('data-mutasi-penduduk-desa');
+        return redirect('data-rekapitulasi-penduduk');
     }
 
     /**
@@ -177,7 +176,7 @@ class DataRekapPenduduk extends Controller
 
         Session::flash('pesan_sukses', 'Data Mutasi Penduduk Desa berhasil di Diperbarui');
 
-        return redirect('data-mutasi-penduduk-desa/'.$pd->id.'/edit');
+        return redirect('data-rekapitulasi-penduduk/'.$pd->id.'/edit');
     }
 
     /**
@@ -193,7 +192,7 @@ class DataRekapPenduduk extends Controller
         $pd->delete();
         Session::flash('pesan_sukses', 'Data Mutasi Penduduk Desa Berhasil Dihapus');
         
-        return redirect('data-mutasi-penduduk-desa');
+        return redirect('data-rekapitulasi-penduduk');
     }
 
     public function cetak($keyword)
@@ -204,7 +203,7 @@ class DataRekapPenduduk extends Controller
             ->get();;
         $jumlah = count($pd);
 
-        $pdf = PDF::loadView('pdf/data-mutasi-penduduk-desa',compact('pd','keyword'))
+        $pdf = PDF::loadView('pdf/data-rekapitulasi-penduduk',compact('pd','keyword'))
                     ->setPaper('a4', 'landscape');
 
         return $pdf->stream();

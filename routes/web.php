@@ -48,8 +48,8 @@ Route::resource('data-mutasi-penduduk-desa', 'Modul\DataMutasiPenduduk');
 Route::post('data-mutasi-penduduk-desa/pengurangan', 'Modul\DataMutasiPenduduk@pengurangan');
 Route::get('data-mutasi-penduduk-desa/cetak/{keywords}', 'Modul\DataMutasiPenduduk@cetak');
 
-Route::resource('data-rekapitulasi-penduduk-akhir-bulan', 'Modul\DataRekapPenduduk');
-Route::get('data-rekapitulasi-penduduk-akhir-bulan/cetak/{keywords}', 'Modul\DataRekapPenduduk@cetak');
+Route::resource('data-rekapitulasi-penduduk', 'Modul\DataRekapPenduduk');
+Route::get('data-rekapitulasi-penduduk/cetak/{keywords}', 'Modul\DataRekapPenduduk@cetak');
 
 Route::resource('data-penduduk-sementara', 'Modul\DataPendudukSementara');
 Route::get('data-penduduk-sementara/cetak/{keywords}', 'Modul\DataPendudukSementara@cetak');

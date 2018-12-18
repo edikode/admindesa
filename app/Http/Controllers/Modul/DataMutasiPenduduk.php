@@ -62,7 +62,7 @@ class DataMutasiPenduduk extends Controller
         $pd->jenis_kelamin = $request->jenis_kelamin;
         $pd->status = $request->status;
         $pd->tmp_lahir = $request->tmp_lahir;
-        $pd->tgl_lahir = $request->tgl_lahir;
+        $pd->tgl_lahir = tgl_en($request->tgl_lahir);
         $pd->agama = $request->agama;
         $pd->pendidikan_terakhir = $request->pendidikan_terakhir;
         $pd->pekerjaan = $request->pekerjaan;
@@ -73,6 +73,7 @@ class DataMutasiPenduduk extends Controller
         $pd->nik = $request->nik;
         $pd->no_kk = $request->no_kk;
         $pd->keterangan = $request->keterangan;
+        $pd->dari = datang;
 
         $pd->save();
 
@@ -80,7 +81,7 @@ class DataMutasiPenduduk extends Controller
 
         $md->data_induk_id = $pd->id;
         $md->tmp_datang = $request->tmp_datang;
-        $md->tgl_datang = $request->tgl_datang;
+        $md->tgl_datang = tgl_en($request->tgl_datang);
         $md->jenis = "datang";
         
         $md->save();
@@ -103,12 +104,22 @@ class DataMutasiPenduduk extends Controller
 
         if($request->jenis == "pindah"){
             $pd->tmp_pindah = $request->tempat;
-            $pd->tgl_pindah = $request->tanggal;
+            $pd->tgl_pindah = tgl_en($request->tanggal);
             $pd->jenis = "pindah";
+
+            $induk = Induk::findorfail($request->nama);
+            $induk->dari = "pindah";
+            $induk->save();
+
         } else {
             $pd->tmp_meninggal = $request->tempat;
-            $pd->tgl_meninggal = $request->tanggal;
+            $pd->tgl_meninggal = tgl_en($request->tanggal);
             $pd->jenis = "meninggal";
+
+            $induk = Induk::findorfail($request->nama);
+            $induk->dari = "meninggal";
+            $induk->save();
+
         }
         
         $pd->save();
@@ -162,12 +173,20 @@ class DataMutasiPenduduk extends Controller
             // 'nik'      => 'required|unique:data_induk,nik,'.$pd['id'],
         ]);
 
-        $pd->tmp_datang = $request->tmp_datang;
-        $pd->tgl_datang = $request->tgl_datang;
-        $pd->tmp_pindah = $request->tmp_pindah;
-        $pd->tgl_pindah = $request->tgl_pindah;
-        $pd->tmp_meninggal = $request->tmp_meninggal;
-        $pd->tgl_meninggal = $request->tgl_meninggal;
+        if($request->jenis == "datang"){
+            $pd->tmp_datang = $request->tmp_datang;
+            $pd->tgl_datang = tgl_en($request->tgl_datang);
+            
+        } elseif($request->jenis == "pindah"){
+            $pd->tmp_pindah = $request->tmp_pindah;
+            $pd->tgl_pindah = tgl_en($request->tgl_pindah);
+            
+        } elseif($request->jenis == "meninggal"){
+            $pd->tmp_meninggal = $request->tmp_meninggal;
+            $pd->tgl_meninggal = tgl_en($request->tgl_meninggal);
+            
+        }
+        
         $pd->keterangan = $request->keterangan;
 
         $pd->save();

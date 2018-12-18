@@ -34,7 +34,7 @@
              
                 @php $i = 1; @endphp
 
-                @foreach($pd as $p)
+                @foreach($data as $p)
 
                     <tr>
                         <td class="tg-rv4w" width="10%" align="center">{{$i++}}</td>

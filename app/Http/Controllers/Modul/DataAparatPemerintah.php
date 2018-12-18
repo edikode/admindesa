@@ -153,7 +153,7 @@ class DataAparatPemerintah extends Controller
         $jumlah = count($pd);
 
         $pdf = PDF::loadView('pdf/data-aparat-pemerintah-desa',compact('pd','keyword'))
-                    ->setPaper('a4');
+                    ->setPaper('a4','landscape');
 
         return $pdf->stream();
         // return $pdf->download('Data Peraturan Daerah.pdf');

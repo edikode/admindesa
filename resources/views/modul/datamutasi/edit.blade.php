@@ -41,13 +41,12 @@
 								@if($pd->tgl_datang != "")
 									<div class='form-group @if($errors->has('tgl_datang')) has-error @endif'>
 										<label class='control-label'>Tanggal</label>
-										
-										<input style="width:150px" type="date" name="tgl_datang" id="tgl_datang" class="form-control" value="@if(count($errors) > 0){{old('tgl_datang')}}@else{{$pd->tgl_datang}}@endif" required>
+										<div class="input-group">
+											<input type="text" data-date-format="dd-mm-yyyy" data-date-viewmode="years" class="form-control date-picker" value="@if(count($errors) > 0){{old('tgl_datang')}}@else{{tgl_id($pd->tgl_datang)}}@endif" name="tgl_datang" id="tgl_datang" required>
+											<span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
+										</div>
 									</div>
-									<div class="input-group">
-										<input type="text" data-date-format="dd-mm-yyyy" data-date-viewmode="years" class="form-control date-picker">
-										<span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
-									</div>
+									<input type="hidden" name="jenis" value="datang">
 									<div class='form-group'>
 										<label class='control-label'>Datang Dari</label>
 										<textarea class='form-control limited' id='tmp_datang' cols='10' rows='4' name='tmp_datang' style='height:75px; resize:none;' maxlength='160'>@if(count($errors) > 0){{old('tmp_datang')}}@else{{$pd->tmp_datang}}@endif</textarea>
@@ -56,9 +55,12 @@
 								@elseif($pd->tgl_pindah != "")
 									<div class='form-group @if($errors->has('tgl_pindah')) has-error @endif'>
 										<label class='control-label'>Tanggal</label>
-										
-										<input style="width:150px" type="date" name="tgl_pindah" id="tgl_pindah" class="form-control" value="@if(count($errors) > 0){{old('tgl_pindah')}}@else{{$pd->tgl_pindah}}@endif" required>
+										<div class="input-group">
+											<input type="text" data-date-format="dd-mm-yyyy" data-date-viewmode="years" class="form-control date-picker" value="@if(count($errors) > 0){{old('tgl_pindah')}}@else{{tgl_id($pd->tgl_pindah)}}@endif" name="tgl_pindah" id="tgl_pindah" required>
+											<span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
+										</div>
 									</div>
+									<input type="hidden" name="jenis" value="pindah">
 									<div class='form-group'>
 										<label class='control-label'>Lokasi Pindah</label>
 										<textarea class='form-control limited' id='tmp_pindah' cols='10' rows='4' name='tmp_pindah' style='height:75px; resize:none;' maxlength='160'>@if(count($errors) > 0){{old('tmp_pindah')}}@else{{$pd->tmp_pindah}}@endif</textarea>
@@ -68,8 +70,12 @@
 									<div class='form-group @if($errors->has('tgl_meninggal')) has-error @endif'>
 										<label class='control-label'>Tanggal</label>
 										
-										<input style="width:150px" type="date" name="tgl_meninggal" id="tgl_meninggal" class="form-control" value="@if(count($errors) > 0){{old('tgl_meninggal')}}@else{{$pd->tgl_meninggal}}@endif" required>
+										<div class="input-group">
+											<input type="text" data-date-format="dd-mm-yyyy" data-date-viewmode="years" class="form-control date-picker" value="@if(count($errors) > 0){{old('tgl_meninggal')}}@else{{tgl_id($pd->tgl_meninggal)}}@endif" name="tgl_meninggal" id="tgl_meninggal" required>
+											<span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
+										</div>
 									</div>
+									<input type="hidden" name="jenis" value="meninggal">
 									<div class='form-group'>
 										<label class='control-label'>Lokasi Meninggal</label>
 										<textarea class='form-control limited' id='tmp_meninggal' cols='10' rows='4' name='tmp_meninggal' style='height:75px; resize:none;' maxlength='160'>@if(count($errors) > 0){{old('tmp_meninggal')}}@else{{$pd->tmp_meninggal}}@endif</textarea>

@@ -73,6 +73,7 @@ class DataInduk extends Controller
         $pd->nik = $request->nik;
         $pd->no_kk = $request->no_kk;
         $pd->keterangan = $request->keterangan;
+        $pd->dari = "lahir";
 
         $pd->save();
 

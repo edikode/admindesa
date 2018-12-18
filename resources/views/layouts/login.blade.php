@@ -12,12 +12,13 @@
 
         <link rel="shortcut icon" href="{{ asset('assets/images/admin.png') }}" />
         <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}"  media="screen">
-        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+        
         <link rel="stylesheet" href="{{ asset('assets/css/main-responsive.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/skin.css') }}" id="skin_color">
         <link rel="stylesheet" href="{{ asset('assets/plugins/iCheck/skins/all.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/fonts/style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/plugins/font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
     </head>
     <body class="login">
